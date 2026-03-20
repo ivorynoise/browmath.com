@@ -1,52 +1,38 @@
 #!/bin/bash
 set -e
 
-# Script to build and push Browmath Docker image
-# Usage: ./build.sh <version>
+REGISTRY="central-harbor.ext.synthlane.com/internal"
+IMAGE_NAME="browmath-com"
 
-if [ -z "$1" ]; then
-  echo "Error: Version tag is required"
-  echo "Usage: ./build.sh <version>"
-  exit 1
+# Ensure we run from this project root
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+# Build latest image
+echo "Building Docker image..."
+docker build -t "$REGISTRY/$IMAGE_NAME:latest" .
+
+# Get tag from argument or prompt
+if [ -n "$1" ]; then
+    TAG="$1"
+else
+    echo "Check this https://central-harbor.ext.synthlane.com/harbor/projects/2/repositories/$IMAGE_NAME/artifacts-tab"
+    read -p "Enter tag to push (e.g., 1.0.0-dev, or 'skip' to skip pushing): " TAG
 fi
 
-VERSION=$1
-REGISTRY="central-harbor.ext.synthlane.com"
-IMAGE_NAME="browmath"
-FULL_IMAGE="${REGISTRY}/${IMAGE_NAME}:${VERSION}"
-
-echo "=========================================="
-echo "Building Browmath Docker Image"
-echo "=========================================="
-echo "Version: ${VERSION}"
-echo "Image: ${FULL_IMAGE}"
-echo ""
-
-# Build the Docker image
-echo "Step 1: Building Docker image..."
-docker build -t "${FULL_IMAGE}" .
-
-if [ $? -ne 0 ]; then
-  echo "❌ Docker build failed"
-  exit 1
+if [ "$TAG" = "skip" ]; then
+    echo "Skipping push."
+    exit 0
 fi
 
-echo "✅ Docker image built successfully"
-echo ""
+# Retag with version
+docker tag "$REGISTRY/$IMAGE_NAME:latest" "$REGISTRY/$IMAGE_NAME:$TAG"
 
-# Push the image to Harbor
-echo "Step 2: Pushing image to Harbor Registry..."
-docker push "${FULL_IMAGE}"
+# Push both tags
+echo "Pushing images..."
+docker push "$REGISTRY/$IMAGE_NAME:latest"
+docker push "$REGISTRY/$IMAGE_NAME:$TAG"
 
-if [ $? -ne 0 ]; then
-  echo "❌ Docker push failed"
-  exit 1
-fi
-
-echo "✅ Docker image pushed successfully"
-echo ""
-
-echo "=========================================="
-echo "Build Complete"
-echo "=========================================="
-echo "Image: ${FULL_IMAGE}"
+echo "Done! Pushed:"
+echo "  - $REGISTRY/$IMAGE_NAME:latest"
+echo "  - $REGISTRY/$IMAGE_NAME:$TAG"
