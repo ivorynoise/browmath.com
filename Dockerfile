@@ -8,6 +8,6 @@ WORKDIR /srv
 COPY Caddyfile /etc/caddy/Caddyfile
 
 # Copy your local HTML files into the container's /srv directory
-COPY browmath.html .
+COPY browmath.html index.html
 # You can copy an entire directory of files like this:
 # COPY ./your-site-folder .
