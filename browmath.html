@@ -3,7 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Browmath</title>
+    <title>Browmath Capital — Crypto Trading Desk | Pausing 2025</title>
+    <meta name="description" content="Browmath Capital was a mid-frequency crypto trading desk built by 10 engineers and traders. We're pausing operations with the full intention of returning." />
+    <link rel="canonical" href="https://browmath.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://browmath.com/" />
+    <meta property="og:title" content="Browmath Capital — Crypto Trading Desk | Pausing 2025" />
+    <meta property="og:description" content="Browmath Capital was a mid-frequency crypto trading desk built by 10 engineers and traders. We're pausing operations with the full intention of returning." />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Browmath Capital — Crypto Trading Desk | Pausing 2025" />
+    <meta name="twitter:description" content="Browmath Capital was a mid-frequency crypto trading desk built by 10 engineers and traders. We're pausing operations with the full intention of returning." />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Browmath Capital",
+      "url": "https://browmath.com",
+      "description": "Browmath Capital was a mid-frequency crypto trading desk. We're pausing operations with the intention of returning.",
+      "foundingDate": "2023",
+      "founders": [
+        { "@type": "Person", "name": "Deepak" },
+        { "@type": "Person", "name": "Shashi" }
+      ]
+    }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23c86428'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2C serif' font-size='20' font-weight='bold' fill='%23fffbf7'%3EB%3C/text%3E%3C/svg%3E" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400&display=swap"
       rel="stylesheet"
@@ -63,10 +94,25 @@
 
       .brand {
         font-family: "Lora", serif;
-        font-size: 1.2rem;
+        font-size: calc(1.2rem + 2px);
+        font-weight: 600;
         color: var(--ink);
         text-decoration: none;
         letter-spacing: 0.02em;
+        position: relative;
+      }
+      .brand::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0;
+        height: 3px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+      }
+      .brand:hover::after {
+        width: 100%;
       }
 
       .pill {
@@ -268,6 +314,18 @@
         }
       }
 
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
       @media (max-width: 680px) {
         header,
         footer {
@@ -301,7 +359,7 @@
     <canvas id="c"></canvas>
 
     <header>
-      <a href="#" class="brand">Browmath</a>
+      <a href="#" class="brand">Browmath Capital</a>
       <span class="pill"><span class="dot"></span>Pausing · 2025</span>
     </header>
 
@@ -313,6 +371,7 @@
       </section>
 
       <section class="body-section">
+        <h2 class="sr-only">What We Built</h2>
         <p class="body-text">
           Two years ago, a small group of us sat around a table with a shared
           conviction — that we could build something meaningful in crypto
@@ -325,7 +384,7 @@
           That decision — that leap — is something we will always be proud of.
         </p>
         <p class="body-text">
-          We built Browmath into a mid-frequency crypto trading desk from
+          We built Browmath Capital into a mid-frequency crypto trading desk from
           scratch. We wrote our own systems. We processed more data than we
           thought possible. We ran real experiments in live markets and learned
           things you simply cannot learn anywhere else.
@@ -348,6 +407,7 @@
       </section>
 
       <section class="quote-section">
+        <h2 class="sr-only">What We Learned</h2>
         <p class="body-text">
           But the markets are unforgiving teachers. A shrinking TVL environment
           made it increasingly difficult to generate the returns we needed to
@@ -367,6 +427,7 @@
       </section>
 
       <section class="sign">
+        <h2 class="sr-only">What's Next</h2>
         <p class="sign-text">
           To everyone who believed in us — our investors, our friends, the wider
           community that watched and supported — thank you. This isn't goodbye.
@@ -375,15 +436,15 @@
         </p>
         <div class="sign-name-block">
           <div class="name-item">
-            <p class="sign-names">Deepak & Shashi</p>
-            <p class="sign-title">Co-Founders, Browmath</p>
+            <p class="sign-names">Deepak &amp; Shashi</p>
+            <p class="sign-title">Co-Founders, Browmath Capital</p>
           </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <span class="foot">© Browmath</span>
+      <span class="foot">© Browmath Capital</span>
       <span class="foot">All rights reserved</span>
     </footer>
 
