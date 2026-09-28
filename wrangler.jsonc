@@ -5,6 +5,7 @@
   "assets": {
     "directory": "./public"
   },
+  "previews": {},
   "routes": [
     { "pattern": "browmath.com", "custom_domain": true },
     { "pattern": "www.browmath.com", "custom_domain": true }
