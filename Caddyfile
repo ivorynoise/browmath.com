@@ -1,8 +1,0 @@
-:80 {
-    root * /srv
-    file_server
-    log {
-        output stdout
-        format json
-    }
-}
