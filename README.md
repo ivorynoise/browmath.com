@@ -1,9 +1,8 @@
 # browmath.com
 Sunsetting website for Browmath.com
 
-# Build
-docker compose up --build
+# Serve locally
+npx wrangler dev
 
-# Serve
-visit http://localhost:80
-
+# Deploy
+npx wrangler deploy
